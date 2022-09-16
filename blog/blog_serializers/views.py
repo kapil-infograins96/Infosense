@@ -58,16 +58,11 @@ class SingleBlogAPI(APIView):
 class LatestBlogAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-           
-            
             blog_list = Blog.objects.filter(latest_blog = True)
-                
             serializer = LatestBlogSerializer(blog_list)
-            # blog_list = list(Blog.objects.all().values_list("title",flat=True))
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "blog_list":blog_list,
                 "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
