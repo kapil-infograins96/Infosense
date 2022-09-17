@@ -64,7 +64,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR , 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,3 +135,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.infograins.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'kapilyadav@infograins.com'
+# EMAIL_HOST_PASSWORD = ".DO-{-^0GAR2"
+EMAIL_HOST_PASSWORD = "Yadav@1357"
+EMAIL_USE_TLS = True

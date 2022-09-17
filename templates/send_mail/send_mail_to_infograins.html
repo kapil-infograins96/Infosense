@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0%;
+            margin: 0%;
+            font-family: 'Poppins', sans-serif;
+            word-wrap: break-word;
+        }
+
+        body {
+            padding: 15px;
+        }
+
+        p i {
+            background: #ffffff;
+            /* padding: 6px; */
+            /* border-radius: 50%; */
+            color: #eb6300;
+            font-size: 14px;
+            margin: 5px 0px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://infograins.com/static/assets/images/logo.png" alt="Infograins" width="200">
+    <hr style="margin: 20px 0px;">
+    <h2 style="margin-bottom: 15px;">Congratulations</h2>
+    <p><span style="color: #e96300; font-weight: 500;"><i class="fa-solid fa-building"></i>Name:</span> <span style="font-weight:600;"> {{Name}}</span></p>
+    <p><span style="color: #e96300;font-weight: 500; "><i class="fa-solid fa-location-dot"></i>Email:</span> <span style="font-weight:600;">{{Email}}</span></p>
+    <p><span style="color: #e96300;font-weight: 500; "><i class="fa-solid fa-phone"></i>Subject:</span> <span style="font-weight:600;">{{Subject}}</span></p>
+    <p><span style="color: #e96300;font-weight: 500; "><i class="fa-solid fa-phone"></i>Description:</span> <span style="font-weight:600;">{{Message}}</span></p>
+    {% if MobileNumber is not None %}
+    <p><span style="color: #e96300;font-weight: 500; "><i class="fa-solid fa-phone"></i>Mobile Number:</span> <span style="font-weight:600;">{{MobileNumber}}</span></p>
+    {% endif %}
+   
+</body>
+</html>
