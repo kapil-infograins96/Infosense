@@ -8,7 +8,7 @@ from rest_framework import status
 import pandas as pd
 from django.http import JsonResponse
 from phone_iso3166.country import *
-from contactus.models import (
+from contact_us.models import (
     ContactUS
 )
 from django.core.mail import EmailMultiAlternatives
@@ -19,7 +19,7 @@ from django.utils.html import strip_tags
 class CountryDailingCodeAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            df_country = pd.read_csv('/home/ubuntu/backend/contactus/country_data/country.csv')
+            df_country = pd.read_csv('/home/ubuntu/backend/contact_us/country_data/country.csv')
             df_country = df_country[df_country['Dial'].notna()]
             df_country['Dial'] = df_country['Dial'].apply(lambda x : x.replace("-",""))
             df_country.drop_duplicates(subset=['Dial'],inplace=True)
