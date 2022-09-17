@@ -9,12 +9,12 @@ from django.urls import reverse
 class Blog(models.Model):
     title = models.CharField(_("blogTitle"),max_length=500)
     description = models.TextField(_("blogDescription"),blank=True,null=True)
-    content = models.TextField(_("blogContent"),blank=True,null=True)
+    content =  models.TextField(_("blogContent"),blank=True,null=True)
     image = models.ImageField(_("blogImage"),upload_to="blog")
     slug = models.SlugField(_("blogSlug"),max_length=500,blank=True)
+    latest = models.BooleanField(_("latestBlog"),default=False,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-    latest_blog = models.BooleanField(_("latest_blog"),default=False)
 
     class Meta:
         verbose_name_plural = "Blog"
@@ -25,16 +25,38 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
-        
-    def __str__(self):
-        return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog',kwargs={'blog_url':self.slug})
 
 
-class BlogHerosection(models.Model):
-    blog_title = models.CharField(_("blogTitle"),max_length=250)
+class BlogHeroSection(models.Model):
+    title = models.CharField(_("blogTitle"),max_length=250,null=True,blank=True)
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
     def __str__(self) :
-        return self.blog_title
+        return self.title
+
+class BlogPageMetaTag(models.Model):
+    title = models.CharField(max_length=500, blank=True,null=True)
+    content = models.TextField()
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return "{}".format(self.title)
+
+class MetaTag(models.Model):
+    blog = models.OneToOneField(Blog,on_delete=models.CASCADE)
+    title = models.CharField(max_length=500, blank=True,null=True)
+    content = models.TextField()
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Blog Meta Tag"
+    
+    def __str__(self):
+        return "{}".format(self.blog)

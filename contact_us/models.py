@@ -16,7 +16,7 @@ class ContactUS(models.Model):
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
     class Meta:
-        verbose_name_plural = "Contact Infograins"
+        verbose_name_plural = "Contact"
     
     def __str__(self):
         return "{}".format(self.fullName)

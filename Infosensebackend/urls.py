@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('blog/',include('blog.blog_serializers.urls')),
-    path('',include('contact_us.contactus_serializers.urls'))
-
+    path('',include('contact_us.contactus_serializers.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     
     
 ]
