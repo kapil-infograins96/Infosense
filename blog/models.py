@@ -9,7 +9,7 @@ from django.urls import reverse
 class Blog(models.Model):
     title = models.CharField(_("blogTitle"),max_length=500)
     description = models.TextField(_("blogDescription"),blank=True,null=True)
-    content =  models.TextField(_("blogContent"),blank=True,null=True)
+    content =  RichTextUploadingField(_("blogContent"),blank=True,null=True)
     image = models.ImageField(_("blogImage"),upload_to="blog")
     slug = models.SlugField(_("blogSlug"),max_length=500,blank=True)
     latest = models.BooleanField(_("latestBlog"),default=False,null=True)

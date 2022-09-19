@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'blog',
     'contact_us',
-    'subscriber'
+    'subscriber',
+    'ckeditor',
+    'ckeditor_uploader'
+    
     
 ]
 
@@ -138,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
 
-
+CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.infograins.com'
