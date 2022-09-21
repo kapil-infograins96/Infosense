@@ -15,12 +15,8 @@ class ContactUsAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
 
-    @admin.display(description='project_description')
-    def display_projectDescription(self, obj):
-        return format_html(
-            '<textarea cols="60" rows="4" readonly>{}</textarea>',
-            obj.projectDescription)
+   
 
-    list_display  = ['fullName','email','contactNumber','countryName','display_projectDescription','admin_created_at','admin_updated_at']
+    list_display  = ['fullName','email','contactNumber','countryName','admin_created_at','admin_updated_at']
 
 admin.site.register(ContactUS, ContactUsAdmin)
